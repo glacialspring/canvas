@@ -10,6 +10,7 @@ import (
 
 	"github.com/golang/freetype/truetype"
 	"github.com/tfriedel6/canvas/backend/backendbase"
+	"github.com/tfriedel6/canvas/backend/goglbackend"
 	"golang.org/x/image/font"
 	"golang.org/x/image/math/fixed"
 )
@@ -176,7 +177,9 @@ func (cv *Canvas) Size() (int, int) { return cv.b.Size() }
 
 // set
 func (cv *Canvas) SetSize(w, h int) {
-	cv.b.SetBounds(0, 0, w, h)
+	if b, ok := cv.b.(*goglbackend.GoGLBackend); ok {
+		b.SetBounds(0, 0, w, h)
+	}
 }
 
 func (cv *Canvas) tf(v backendbase.Vec) backendbase.Vec {

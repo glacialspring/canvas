@@ -131,7 +131,7 @@ var Performance = struct {
 	// CacheSize is only approximate
 	CacheSize int
 }{
-	CacheSize: 128_000_000,
+	CacheSize: 128000000,
 }
 
 // New creates a new canvas with the given viewport coordinates.
@@ -173,6 +173,11 @@ func (cv *Canvas) Height() int {
 
 // Size returns the internal width and height of the canvas
 func (cv *Canvas) Size() (int, int) { return cv.b.Size() }
+
+// set
+func (cv *Canvas) SetSize(w, h int) {
+	cv.b.SetBounds(0, 0, w, h)
+}
 
 func (cv *Canvas) tf(v backendbase.Vec) backendbase.Vec {
 	return v.MulMat(cv.state.transform)

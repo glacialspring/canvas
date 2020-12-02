@@ -127,7 +127,7 @@ func CreateWindow(w, h int, title string) (*Window, *canvas.Canvas, error) {
 }
 
 func (wnd *Window) SetTitle(title string) {
-	wnd.Window.SetTile(title)
+	wnd.Window.SetTitle(title)
 }
 
 // FPS returns the frames per second (averaged over 10 frames)
